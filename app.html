@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de Lógica Proposicional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Validador de Lógica Proposicional</h1>
+        
+        <div class="input-group">
+            <label class="input-label">Proposición:</label>
+            <input id="proposition" type="text" class="input-field" placeholder="Ingresa tu proposición lógica">
+        </div>
+        
+        <div class="symbols-grid">
+            <button onclick="addSymbol('p')" class="symbol-btn">p</button>
+            <button onclick="addSymbol('q')" class="symbol-btn">q</button>
+            <button onclick="addSymbol('r')" class="symbol-btn">r</button>
+            <button onclick="addSymbol('s')" class="symbol-btn">s</button>
+            <button onclick="addSymbol('∧')" class="symbol-btn operator-btn">∧</button>
+            <button onclick="addSymbol('∨')" class="symbol-btn operator-btn">∨</button>
+            <button onclick="addSymbol('⊕')" class="symbol-btn operator-btn">⊕</button>
+            <button onclick="addSymbol('→')" class="symbol-btn operator-btn">→</button>
+            <button onclick="addSymbol('↔')" class="symbol-btn operator-btn">↔</button>
+            <button onclick="addSymbol('¬')" class="symbol-btn operator-btn">¬</button>
+            <button onclick="addSymbol('(')" class="symbol-btn parenthesis-btn">(</button>
+            <button onclick="addSymbol(')')" class="symbol-btn parenthesis-btn">)</button>
+        </div>
+        
+        <div class="input-group">
+            <label class="input-label">Tipo de Evaluación:</label>
+            <select id="evaluationType" class="input-field">
+                <option value="tautology">Tautología</option>
+                <option value="contradiction">Contradicción</option>
+                <option value="contingency">Contingencia</option>
+            </select>
+        </div>
+        
+        <button onclick="evaluateProposition()" class="evaluate-btn">
+            Evaluar
+        </button>
+        
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="logic.js"></script>
+</body>
+</html>

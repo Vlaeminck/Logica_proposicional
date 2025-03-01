@@ -1,0 +1,284 @@
+:root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #6366f1;
+    --secondary-dark: #4f46e5;
+    --accent: #0ea5e9;
+    --background: #0f172a;
+    --surface: #1e293b;
+    --surface-light: #334155;
+    --text: #f8fafc;
+    --text-light: #cbd5e1;
+    --error: #ef4444;
+    --success: #22c55e;
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    line-height: 1.5;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background: var(--surface);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 2.5rem;
+    border: 1px solid var(--surface-light);
+    backdrop-filter: blur(16px);
+}
+
+h1 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.025em;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input-group {
+    margin-bottom: 2rem;
+}
+
+.input-label {
+    display: block;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid var(--surface-light);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.symbols-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: var(--surface-light);
+    border-radius: 16px;
+}
+
+.symbol-btn {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.symbol-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    filter: brightness(110%);
+}
+
+.operator-btn {
+    background: var(--secondary);
+}
+
+.parenthesis-btn {
+    background: var(--accent);
+}
+
+.evaluate-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--text);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.evaluate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    filter: brightness(110%);
+}
+
+.result {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.result-success {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success);
+    border: 2px solid var(--success);
+}
+
+.result-error {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+    border: 2px solid var(--error);
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23cbd5e1'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2rem;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+/* Animaciones mejoradas */
+.result {
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media queries mejorados */
+@media (max-width: 640px) {
+    .container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .symbols-grid {
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+        gap: 0.4rem;
+        padding: 0.75rem;
+    }
+
+    .symbol-btn {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .evaluate-btn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Efectos de focus mejorados */
+button:focus, input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--surface-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Añadir estas nuevas clases y animaciones */
+.container.success-border {
+    animation: glowSuccess 1s ease-in-out;
+}
+
+.container.error-border {
+    animation: glowError 1s ease-in-out;
+}
+
+@keyframes glowSuccess {
+    0% {
+        border-color: var(--surface-light);
+        box-shadow: var(--shadow);
+    }
+    50% {
+        border-color: var(--success);
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+    }
+    100% {
+        border-color: var(--surface-light);
+        box-shadow: var(--shadow);
+    }
+}
+
+@keyframes glowError {
+    0% {
+        border-color: var(--surface-light);
+        box-shadow: var(--shadow);
+    }
+    50% {
+        border-color: var(--error);
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    }
+    100% {
+        border-color: var(--surface-light);
+        box-shadow: var(--shadow);
+    }
+} 

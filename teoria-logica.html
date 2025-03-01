@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aprende lógica proposicional: conceptos básicos, operadores lógicos, tablas de verdad, tautologías, contradicciones y contingencias. Guía completa con ejemplos.">
+    <meta name="keywords" content="lógica proposicional, operadores lógicos, tablas de verdad, tautología, contradicción, contingencia, matemática discreta">
+    <title>Guía Completa de Lógica Proposicional | Teoría y Ejemplos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --background: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        .navbar {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .example {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-left: 4px solid var(--primary);
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .practice-link {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .practice-link:hover {
+            background: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            .nav-toggle {
+                display: block;
+                position: relative;
+                padding: 0.5rem;
+                cursor: pointer;
+            }
+
+            .nav-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: white;
+                margin: 5px 0;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 0;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            td, th {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .card {
+                padding: 1.25rem;
+                margin-bottom: 1rem;
+                border-radius: 12px;
+            }
+
+            .example {
+                padding: 0.75rem;
+                margin: 0.75rem 0;
+                font-size: 0.9rem;
+            }
+
+            .practice-link {
+                display: block;
+                text-align: center;
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            section {
+                margin-bottom: 1.5rem;
+            }
+
+            html {
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .back-to-top {
+                display: none;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: var(--primary);
+                color: white;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 40px;
+                z-index: 1000;
+                cursor: pointer;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+
+            .back-to-top.visible {
+                display: block;
+                animation: fadeIn 0.3s ease;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1>Lógica Proposicional</h1>
+            <div class="nav-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#introduccion">Introducción</a>
+                <a href="#operadores">Operadores</a>
+                <a href="#tablas">Tablas de Verdad</a>
+                <a href="#tipos">Tipos de Proposiciones</a>
+                <a href="propositional-logic-app.html">Práctica</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Guía Completa de Lógica Proposicional</h1>
+        <p>Aprende los fundamentos de la lógica matemática y mejora tu pensamiento lógico</p>
+    </div>
+
+    <main class="container">
+        <section id="introduccion" class="card">
+            <h2>Introducción a la Lógica Proposicional</h2>
+            <p>La lógica proposicional es un sistema formal en el que las fórmulas representan proposiciones, y donde estas pueden ser verdaderas o falsas. Es la base del razonamiento lógico en matemáticas y computación.</p>
+            
+            <h3>¿Qué es una Proposición?</h3>
+            <p>Una proposición es una oración declarativa que tiene un valor de verdad único: verdadero (V) o falso (F).</p>
+            
+            <div class="example">
+                <strong>Ejemplos de proposiciones:</strong>
+                <ul>
+                    <li>Madrid es la capital de España (Verdadero)</li>
+                    <li>2 + 2 = 5 (Falso)</li>
+                    <li>Todos los números primos son impares (Falso)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="operadores" class="card">
+            <h2>Operadores Lógicos</h2>
+            <p>Los operadores lógicos nos permiten combinar proposiciones simples para formar proposiciones compuestas.</p>
+
+            <table>
+                <tr>
+                    <th>Operador</th>
+                    <th>Símbolo</th>
+                    <th>Significado</th>
+                </tr>
+                <tr>
+                    <td>Negación</td>
+                    <td>¬</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>Conjunción</td>
+                    <td>∧</td>
+                    <td>Y</td>
+                </tr>
+                <tr>
+                    <td>Disyunción</td>
+                    <td>∨</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>Disyunción exclusiva</td>
+                    <td>⊕</td>
+                    <td>O... O</td>
+                </tr>
+                <tr>
+                    <td>Implicación</td>
+                    <td>→</td>
+                    <td>Si..., entonces...</td>
+                </tr>
+                <tr>
+                    <td>Doble Implicación</td>
+                    <td>↔</td>
+                    <td>Si y solo si</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="tablas" class="card">
+            <h2>Tablas de Verdad</h2>
+            <p>Las tablas de verdad muestran todos los posibles valores de verdad de una proposición compuesta.</p>
+
+            <h3>Tabla de Verdad: Conjunción (∧)</h3>
+            <table>
+                <tr>
+                    <th>p</th>
+                    <th>q</th>
+                    <th>p ∧ q</th>
+                </tr>
+                <tr>
+                    <td>V</td>
+                    <td>V</td>
+                    <td>V</td>
+                </tr>
+                <tr>
+                    <td>V</td>
+                    <td>F</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>V</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="tipos" class="card">
+            <h2>Tipos de Proposiciones</h2>
+            
+            <h3>Tautología</h3>
+            <p>Una proposición que siempre es verdadera, sin importar los valores de verdad de sus componentes.</p>
+            <div class="example">
+                <strong>Ejemplo:</strong> p ∨ ¬p (Una proposición o su negación)
+            </div>
+
+            <h3>Contradicción</h3>
+            <p>Una proposición que siempre es falsa, sin importar los valores de verdad de sus componentes.</p>
+            <div class="example">
+                <strong>Ejemplo:</strong> p ∧ ¬p (Una proposición y su negación)
+            </div>
+
+            <h3>Contingencia</h3>
+            <p>Una proposición que puede ser verdadera o falsa, dependiendo de los valores de verdad de sus componentes.</p>
+            <div class="example">
+                <strong>Ejemplo:</strong> p ∧ q (La conjunción de dos proposiciones)
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>¡Practica lo Aprendido!</h2>
+            <p>Pon a prueba tus conocimientos con nuestro validador de proposiciones lógicas.</p>
+            <a href="propositional-logic-app.html" class="practice-link">Ir al Validador</a>
+        </section>
+    </main>
+
+    <div class="back-to-top" onclick="scrollToTop()">↑</div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        window.onscroll = function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html> 
