@@ -8,3 +8,6 @@ App de lógica proposicional
   1 Escribe tu proposición lógica en el campo de texto o utiliza los botones de variables y conectores (p, q, r, s, ∧, ∨, ¬, →, etc.) para componerla correctamente.
   2 Selecciona el tipo de evaluación en la lista desplegable (por ejemplo, para comprobar si es tautología).
   3 Haz clic en “EVALUAR”. La aplicación procesará la proposición y mostrará si cumple la condición elegida (p. ej., si realmente es una tautología).
+
+
+Esta aplicación fue creada usando en gran parte Cursor AI. La idea de diseño y planteo UX/UI fueron diseñadas por mí como la lógica y las funcionalidades
